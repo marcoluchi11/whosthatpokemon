@@ -1,7 +1,22 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { capitalize } from "../helpers";
+import Error from "./Error";
 import GuessPkmn from "./GuessPkmn";
+import Success from "./Success";
+const Container = styled.div`
+  @media (max-width: 720px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
 const Image = styled.img`
+  @media (max-width: 720px) {
+    margin: 3rem 0;
+    position: static;
+  }
   position: fixed;
   top: 35%;
   left: 20%;
@@ -9,37 +24,24 @@ const Image = styled.img`
   height: 15rem;
 `;
 const Guesser = styled.div`
-  position: fixed;
+  @media (max-width: 720px) {
+    position: static;
+    margin-top: 5rem;
+  }
+  position: absolute;
   top: 85%;
-  left: 20%;
-  input[type="text"] {
-    outline: 0;
-    border-radius: 5px;
-    border: 1px solid #b2b2b2;
-    padding: 0.5rem 0;
-    margin: 0 1rem;
-  }
-  button {
-    margin: 1rem;
-    outline: 0;
-    border: 0;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 5px;
-    background-color: #000;
-    color: #fff;
-  }
-  button.another {
-    background-color: #fff;
-    color: #000;
-  }
+  left: 13%;
 `;
 const Guess = () => {
   const [pkmnImage, setPkmnImage] = useState("");
   const [pokemon, setPokemon] = useState({});
   const [discover, setDiscover] = useState("covered");
   const [guess, setGuess] = useState("");
+  const [success, setSuccess] = useState({ state: false, message: "" });
+  const [error, setError] = useState({ state: false, message: "" });
   const getPokemon = async () => {
+    setSuccess({ state: false, message: "" });
+    setError({ state: false, message: "" });
     setDiscover("covered");
     setGuess("");
     const random = Math.round(Math.random() * 386);
@@ -53,17 +55,27 @@ const Guess = () => {
   useEffect(() => {
     getPokemon();
   }, []);
-  const handleGuess = () => {
+  const handleGuess = (e) => {
+    e.preventDefault();
     if (guess.toLowerCase() === pokemon.name) {
       setDiscover("discovered");
-      console.log(`You guess Pokemon's name correct is ${pokemon.name} `);
-      return;
+      setSuccess({
+        state: true,
+        message: `You guess it! Pokemon's name correct is ${capitalize(
+          pokemon.name
+        )} `,
+      });
     }
-    console.log("Ups! you didn't guess");
+    setError({ state: true, message: "Ups! you didn't guess" });
+
+    setTimeout(() => {
+      setSuccess({ state: false, message: "" });
+      setError({ state: false, message: "" });
+    }, 3000);
   };
   const handleChange = (e) => setGuess(e.target.value);
   return (
-    <div>
+    <Container>
       <Image className={discover} src={pkmnImage} alt="pkmn" />
       <Guesser>
         <GuessPkmn
@@ -72,8 +84,11 @@ const Guess = () => {
           handleGuess={handleGuess}
           guess={guess}
         />
+
+        {success.state && <Success message={success.message} />}
+        {error.state && <Error message={error.message} />}
       </Guesser>
-    </div>
+    </Container>
   );
 };
 
