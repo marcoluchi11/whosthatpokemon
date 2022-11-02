@@ -4,11 +4,17 @@ const Container = styled.div`
   background-color: #ed4337;
   border-radius: 5px;
   margin: 1rem 0;
+  max-width: 15rem;
   p {
-    color: #000;
-    padding: 0 2rem;
+    color: #fff;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  @media (min-width: 720px) {
+    max-width: inherit;
   }
 `;
+
 const Error = ({ message }) => {
   return (
     <Container>
