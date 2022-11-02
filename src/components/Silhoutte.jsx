@@ -1,38 +1,37 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { capitalize } from "../helpers";
-import Error from "./Error";
+
 import GuessPkmn from "./GuessPkmn";
-import Success from "./Success";
 const Container = styled.div`
-  @media (max-width: 720px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  .covered {
+    transform: scale(2);
+    filter: brightness(0);
+  }
+  .discovered {
+    transform: scale(2);
+    filter: brightness(1);
+    transition: filter 0.5s ease-out;
   }
 `;
 const Image = styled.img`
-  @media (max-width: 720px) {
-    margin: 3rem 0;
-    position: static;
+  @media (min-width: 720px) {
+    height: 10rem;
+    width: 10rem;
+    margin: 2.5rem;
   }
-  position: fixed;
-  top: 35%;
-  left: 20%;
-  width: 15rem;
-  height: 15rem;
+  margin: 0;
+  height: 12rem;
+  width: 12rem;
 `;
-const Guesser = styled.div`
-  @media (max-width: 720px) {
-    position: static;
-    margin-top: 5rem;
-  }
-  position: absolute;
-  top: 85%;
-  left: 13%;
+const ContainerImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
 `;
-const Guess = () => {
+const Guesser = styled.div``;
+const Silhoutte = () => {
   const [pkmnImage, setPkmnImage] = useState("");
   const [pokemon, setPokemon] = useState({});
   const [discover, setDiscover] = useState("covered");
@@ -65,31 +64,32 @@ const Guess = () => {
           pokemon.name
         )} `,
       });
+    } else {
+      setError({ state: true, message: "Ups! you didn't guess" });
     }
-    setError({ state: true, message: "Ups! you didn't guess" });
-
     setTimeout(() => {
       setSuccess({ state: false, message: "" });
       setError({ state: false, message: "" });
-    }, 3000);
+    }, 2500);
   };
   const handleChange = (e) => setGuess(e.target.value);
   return (
     <Container>
-      <Image className={discover} src={pkmnImage} alt="pkmn" />
+      <ContainerImage>
+        <Image className={discover} src={pkmnImage} alt="pkmn" />
+      </ContainerImage>
       <Guesser>
         <GuessPkmn
           handleChange={handleChange}
           getPokemon={getPokemon}
           handleGuess={handleGuess}
           guess={guess}
+          success={success}
+          error={error}
         />
-
-        {success.state && <Success message={success.message} />}
-        {error.state && <Error message={error.message} />}
       </Guesser>
     </Container>
   );
 };
 
-export default Guess;
+export default Silhoutte;

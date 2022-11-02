@@ -1,12 +1,28 @@
+import styled from "styled-components";
 import "./App.css";
-import Guess from "./components/Silhoutte";
-
+import Silhoutte from "./components/Silhoutte";
+const Container = styled.div`
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (min-width: 720px) {
+    margin-top: 10rem;
+    width: 50%;
+  }
+`;
+const Heading = styled.h1`
+  padding: 1rem;
+  margin: 1rem;
+  text-align: center;
+`;
 function App() {
   return (
-    <div>
-      <h1>Who's that Pokemon?</h1>
-      <Guess />
-    </div>
+    <Container>
+      <Heading>Who's that Pokemon?</Heading>
+      <Silhoutte />
+    </Container>
   );
 }
 
