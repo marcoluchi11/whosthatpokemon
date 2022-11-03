@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+const Container = styled.div`
   background-color: #4bb543;
   border-radius: 5px;
   margin: 1rem 0;
@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 const Success = ({ message }) => {
   return (
-    <Container>
+    <Container className="appearence">
       <p>{message}</p>
     </Container>
   );

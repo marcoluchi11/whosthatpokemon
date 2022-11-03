@@ -13,3 +13,37 @@ html {
     background-size: cover;
   }
 }
+
+.appearence-appear {
+  opacity: 0;
+}
+
+.appearence-appear-active {
+  opacity: 1;
+  transition: opacity 2000ms;
+}
+
+.appearence-enter {
+  opacity: 0;
+}
+
+.appearence-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+
+.appearence-enter-done {
+  opacity: 1;
+}
+.appearence-exit {
+  opacity: 1;
+}
+
+.appearence-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+
+.appearence-exit-done {
+  opacity: 0;
+}

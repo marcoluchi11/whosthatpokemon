@@ -1,6 +1,8 @@
+import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import Error from "./Error";
 import Success from "./Success";
+
 const Form = styled.form`
   @media (min-width: 720px) {
     display: block;
@@ -61,8 +63,12 @@ const GuessPkmn = ({
       <button type="button" className="another" onClick={() => getPokemon()}>
         Guess Another one
       </button>
-      {success.state && <Success message={success.message} />}
-      {error.state && <Error message={error.message} />}
+      <CSSTransition in={success.state} timeout={2500} classNames="appearence">
+        <Success message={success.message} />
+      </CSSTransition>
+      <CSSTransition in={error.state} timeout={2500} classNames="appearence">
+        <Error message={error.message} />
+      </CSSTransition>
     </Form>
   );
 };
