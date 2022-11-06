@@ -9,7 +9,6 @@ html {
 @media (min-width: 720px) {
   html {
     background: url("./components/template.png") no-repeat center center fixed;
-
     background-size: cover;
   }
 }
@@ -29,7 +28,7 @@ html {
 
 .appearence-enter-active {
   opacity: 1;
-  transition: opacity 1000ms;
+  transition: opacity 2000ms;
 }
 
 .appearence-enter-done {
@@ -41,7 +40,7 @@ html {
 
 .appearence-exit-active {
   opacity: 0;
-  transition: opacity 1000ms;
+  transition: opacity 2000ms;
 }
 
 .appearence-exit-done {
