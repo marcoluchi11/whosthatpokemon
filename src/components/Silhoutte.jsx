@@ -15,12 +15,12 @@ const Container = styled.div`
   }
 `;
 const Image = styled.img`
-  @media (min-width: 720px) {
-    height: 10rem;
-    width: 10rem;
+  @media (min-width: 1600px) {
+    height: 15rem;
+    width: 15rem;
     margin: 2.5rem;
   }
-  margin: 0;
+  margin: 1rem;
   height: 12rem;
   width: 12rem;
 `;
@@ -28,9 +28,16 @@ const ContainerImage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem;
+  margin: 1rem;
+  padding: 1rem;
 `;
-const Guesser = styled.div``;
+const Guesser = styled.div`
+  @media (min-width: 720px) {
+  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const Silhoutte = () => {
   const [pkmnImage, setPkmnImage] = useState("");
   const [pokemon, setPokemon] = useState({});
@@ -67,10 +74,6 @@ const Silhoutte = () => {
     } else {
       setError({ state: true, message: "Ups! you didn't guess" });
     }
-    setTimeout(() => {
-      setSuccess({ state: false, message: "" });
-      setError({ state: false, message: "" });
-    }, 2500);
   };
   const handleChange = (e) => setGuess(e.target.value);
   return (
