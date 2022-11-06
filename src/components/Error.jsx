@@ -13,8 +13,10 @@ const Container = styled.div`
   @media (min-width: 720px) {
     max-width: inherit;
   }
+  @media (min-width: 1600px) {
+    font-size: 3rem;
+  }
 `;
-
 const Error = ({ message }) => {
   return (
     <Container className="appearence">

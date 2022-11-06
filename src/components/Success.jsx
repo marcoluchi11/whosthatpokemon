@@ -13,6 +13,9 @@ const Container = styled.div`
   @media (min-width: 720px) {
     max-width: inherit;
   }
+  @media (min-width: 1600px) {
+    font-size: 3rem;
+  }
 `;
 const Success = ({ message }) => {
   return (
@@ -21,5 +24,4 @@ const Success = ({ message }) => {
     </Container>
   );
 };
-
 export default Success;
