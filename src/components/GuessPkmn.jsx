@@ -4,17 +4,14 @@ import Error from "./Error";
 import Success from "./Success";
 
 const Form = styled.form`
-  @media (min-width: 720px) {
-    display: block;
-  }
   display: flex;
   flex-direction: column;
   height: 20rem;
   justify-content: center;
+  margin-top: 5rem;
   input[type="text"] {
     color: #333;
     font-size: 1.2rem;
-    margin: 0 auto;
     padding: 0.5rem 1rem;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
@@ -38,6 +35,17 @@ const Form = styled.form`
     color: #000;
     max-width: 15rem;
     border: 1px solid #000;
+  }
+  @media (min-width: 720px) {
+    display: block;
+  }
+  @media (min-width: 1800px) {
+    input[type="text"] {
+      font-size: 2.5rem;
+    }
+    button {
+      font-size: 2.5rem;
+    }
   }
 `;
 const GuessPkmn = ({
@@ -63,11 +71,11 @@ const GuessPkmn = ({
       <button type="button" className="another" onClick={() => getPokemon()}>
         Guess Another one
       </button>
-      <CSSTransition in={success.state} timeout={2500} classNames="appearence">
-        <Success message={success.message} />
-      </CSSTransition>
-      <CSSTransition in={error.state} timeout={2500} classNames="appearence">
+      <CSSTransition in={error.state} timeout={2000} classNames="appearence">
         <Error message={error.message} />
+      </CSSTransition>
+      <CSSTransition in={success.state} timeout={2000} classNames="appearence">
+        <Success message={success.message} />
       </CSSTransition>
     </Form>
   );
