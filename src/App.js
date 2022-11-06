@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "./App.css";
 import Silhoutte from "./components/Silhoutte";
 const Container = styled.div`
   width: 100%;
