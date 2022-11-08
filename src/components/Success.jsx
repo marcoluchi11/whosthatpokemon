@@ -5,10 +5,11 @@ const Container = styled.div`
   border-radius: 5px;
   margin: 1rem 0;
   max-width: 15rem;
+
   p {
     color: #fff;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0.3rem 1rem;
   }
   @media (min-width: 720px) {
     max-width: inherit;

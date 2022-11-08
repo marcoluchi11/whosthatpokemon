@@ -8,7 +8,7 @@ const Container = styled.div`
   p {
     color: #fff;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0.3rem 1rem;
   }
   @media (min-width: 720px) {
     max-width: inherit;
