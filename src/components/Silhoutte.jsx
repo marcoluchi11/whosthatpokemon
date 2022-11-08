@@ -56,13 +56,17 @@ const Silhoutte = () => {
     const response = await data.json();
     setPkmnImage(response.sprites.front_default);
     setPokemon(response);
-    console.log(response);
   };
   useEffect(() => {
     getPokemon();
   }, []);
   const handleGuess = (e) => {
     e.preventDefault();
+    if (guess === "") {
+      setError({ state: false, message: "Error! Insert a Pokemon's name" });
+      return;
+    }
+    setError({ state: false, message: "" });
     if (guess.toLowerCase() === pokemon.name) {
       setDiscover("discovered");
       setSuccess({
