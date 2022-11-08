@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import Error from "./Error";
@@ -56,9 +57,15 @@ const GuessPkmn = ({
   success,
   error,
 }) => {
+  const inputReference = useRef(null);
+  useEffect(() => {
+    inputReference.current.focus();
+  }, [getPokemon]);
   return (
     <Form onSubmit={handleGuess}>
       <input
+        ref={inputReference}
+        autoFocus
         placeholder="Guess Pokemon..."
         value={guess}
         autoComplete="off"
