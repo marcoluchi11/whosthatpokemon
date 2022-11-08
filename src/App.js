@@ -9,6 +9,7 @@ const Container = styled.div`
   @media (min-width: 720px) {
     margin-top: 10rem;
     width: 50%;
+    margin-left: 5rem;
   }
 `;
 const Heading = styled.h1`
