@@ -7,16 +7,17 @@ import Success from "./Success";
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  height: 20rem;
-  justify-content: center;
   margin-top: 5rem;
+  .formulary {
+    display: flex;
+    flex-direction: column;
+  }
   input[type="text"] {
     color: #333;
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 7px;
     background-color: rgb(255, 255, 255);
-
     border: 1px solid #ced4da;
   }
   button {
@@ -38,7 +39,11 @@ const Form = styled.form`
     border: 1px solid #000;
   }
   @media (min-width: 720px) {
-    display: block;
+    .formulary {
+      flex-direction: row;
+      align-items: center;
+      /* margin-left: 5rem; */
+    }
   }
   @media (min-width: 1800px) {
     input[type="text"] {
@@ -63,27 +68,35 @@ const GuessPkmn = ({
   }, [getPokemon]);
   return (
     <Form onSubmit={handleGuess}>
-      <input
-        ref={inputReference}
-        autoFocus
-        placeholder="Guess Pokemon..."
-        value={guess}
-        autoComplete="off"
-        type="text"
-        name="name"
-        id="name"
-        onChange={handleChange}
-      />
-      <button type="submit">Guess</button>
-      <button type="button" className="another" onClick={() => getPokemon()}>
-        Guess Another one
-      </button>
-      <CSSTransition in={error.state} timeout={2000} classNames="appearence">
-        <Error message={error.message} />
-      </CSSTransition>
-      <CSSTransition in={success.state} timeout={2000} classNames="appearence">
-        <Success message={success.message} />
-      </CSSTransition>
+      <div className="formulary">
+        <input
+          ref={inputReference}
+          autoFocus
+          placeholder="Guess Pokemon..."
+          value={guess}
+          autoComplete="off"
+          type="text"
+          name="name"
+          id="name"
+          onChange={handleChange}
+        />
+        <button type="submit">Guess</button>
+        <button type="button" className="another" onClick={() => getPokemon()}>
+          Guess Another one
+        </button>
+      </div>
+      <div className="transi">
+        <CSSTransition in={error.state} timeout={2000} classNames="appearence">
+          <Error message={error.message} />
+        </CSSTransition>
+        <CSSTransition
+          in={success.state}
+          timeout={2000}
+          classNames="appearence"
+        >
+          <Success message={success.message} />
+        </CSSTransition>
+      </div>
     </Form>
   );
 };
