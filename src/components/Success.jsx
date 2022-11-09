@@ -20,7 +20,7 @@ const Container = styled.div`
 `;
 const Success = ({ message }) => {
   return (
-    <Container className="appearence">
+    <Container className="appearence-appear">
       <p>{message}</p>
     </Container>
   );

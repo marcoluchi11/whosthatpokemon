@@ -19,7 +19,7 @@ const Container = styled.div`
 `;
 const Error = ({ message }) => {
   return (
-    <Container className="appearence">
+    <Container className="appearence-appear">
       <p>{message}</p>
     </Container>
   );
