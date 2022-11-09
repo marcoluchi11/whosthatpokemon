@@ -16,6 +16,10 @@ const Heading = styled.h1`
   padding: 1rem;
   margin: 1rem;
   text-align: center;
+
+  @media (min-width: 800px) {
+    font-size: 3rem;
+  }
 `;
 function App() {
   return (
