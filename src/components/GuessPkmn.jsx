@@ -86,15 +86,15 @@ const GuessPkmn = ({
         </button>
       </div>
       <div className="transi">
-        <CSSTransition in={error.state} timeout={2000} classNames="appearence">
-          <Error message={error.message} />
-        </CSSTransition>
         <CSSTransition
           in={success.state}
           timeout={2000}
           classNames="appearence"
         >
           <Success message={success.message} />
+        </CSSTransition>
+        <CSSTransition in={error.state} timeout={2000} classNames="appearence">
+          <Error message={error.message} />
         </CSSTransition>
       </div>
     </Form>
