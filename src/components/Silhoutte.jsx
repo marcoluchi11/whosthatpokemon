@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
+import { PokeContext } from "../context/PokeContext";
 import { capitalize } from "../helpers";
 
 import GuessPkmn from "./GuessPkmn";
@@ -39,6 +40,7 @@ const Guesser = styled.div`
   align-items: center;
 `;
 const Silhoutte = () => {
+  const { points, setPoints } = useContext(PokeContext);
   const [pkmnImage, setPkmnImage] = useState("");
   const [pokemon, setPokemon] = useState({});
   const [discover, setDiscover] = useState("covered");
@@ -75,8 +77,13 @@ const Silhoutte = () => {
           pokemon.name
         )} `,
       });
+      setPoints(points + 1);
     } else {
-      setError({ state: true, message: "Ups! you didn't guess" });
+      setError({
+        state: true,
+        message: "Ups! you didn't guess. Points go back to 0",
+      });
+      setPoints(0);
     }
   };
   const handleChange = (e) => setGuess(e.target.value);
