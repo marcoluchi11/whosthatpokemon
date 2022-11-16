@@ -1,19 +1,21 @@
 import styled from "styled-components";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Boton = styled.button`
-  background-color: #fff;
   cursor: pointer;
-  color: #000;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  margin: 4rem;
+  color: rgb(104, 85, 224);
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(104, 85, 224, 1);
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
   outline: 0;
-  border: 1px solid #000;
+  margin: 4rem;
 `;
 const Login = () => {
+  const { loginWithRedirect } = useAuth0();
   return (
     <div>
-      <Boton>Login</Boton>
+      <Boton onClick={() => loginWithRedirect()}>Login</Boton>
     </div>
   );
 };
