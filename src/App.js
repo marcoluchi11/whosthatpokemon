@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Login from "./components/Auth/Login";
+import LoginMenu from "./components/Auth/LoginMenu";
 import Silhoutte from "./components/Silhoutte";
 const Container = styled.div`
   width: 100%;
@@ -26,7 +26,7 @@ function App() {
   return (
     <Container>
       <Heading>Who's that Pokemon?</Heading>
-      <Login />
+      <LoginMenu />
       <Silhoutte />
     </Container>
   );
