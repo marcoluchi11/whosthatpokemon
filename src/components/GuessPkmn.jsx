@@ -3,7 +3,6 @@ import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import Error from "./Error";
 import Success from "./Success";
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -82,7 +81,7 @@ const GuessPkmn = ({
         />
         <button type="submit">Guess</button>
         <button type="button" className="another" onClick={() => getPokemon()}>
-          Guess Another one
+          Guess Next
         </button>
       </div>
       <div className="transi">
