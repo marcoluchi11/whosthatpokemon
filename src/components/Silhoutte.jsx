@@ -17,13 +17,12 @@ const Container = styled.div`
 `;
 const Image = styled.img`
   @media (min-width: 1600px) {
-    height: 15rem;
-    width: 15rem;
-    margin: 2.5rem;
+    height: 10rem;
+    width: 10rem;
   }
   margin: 1rem;
-  height: 12rem;
-  width: 12rem;
+  height: 8rem;
+  width: 8rem;
 `;
 const ContainerImage = styled.div`
   display: flex;
