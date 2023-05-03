@@ -2,13 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import PokeProvider from "./context/PokeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PokeProvider>
-      <App />
-    </PokeProvider>
+    <App />
   </React.StrictMode>
 );
